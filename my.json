@@ -63,6 +63,18 @@
         {
             "url": "https://pastebin.com/raw/5NHaxyGR",
             "name": "道长"
+        },
+        {
+            "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/gaotianliuyun/gao/master/9918.json",
+            "name": "9918"
+        },
+        {
+            "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/xiongjian83/TvBox/main/18/18live.json",
+            "name": "18live"
+        },
+        {
+            "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/xiongjian83/TvBox/main/18/19.json",
+            "name": "19"
         }
     ]
 }
