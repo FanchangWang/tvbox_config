@@ -15,3 +15,7 @@
 [https://raw.gitmirror.com/FanchangWang/tvbox_config/main/my.json](https://raw.gitmirror.com/FanchangWang/tvbox_config/main/my.json)
 
 [https://mirror.ghproxy.com/https://raw.githubusercontent.com/FanchangWang/tvbox_config/main/my.json](https://mirror.ghproxy.com/https://raw.githubusercontent.com/FanchangWang/tvbox_config/main/my.json)
+
+
+## Fengmi影视多线配置接口,仅适用于Fengmi影视
+[https://mirror.ghproxy.com/https://raw.githubusercontent.com/gaotianliuyun/gao/master/0707.json](https://mirror.ghproxy.com/https://raw.githubusercontent.com/gaotianliuyun/gao/master/0707.json)
