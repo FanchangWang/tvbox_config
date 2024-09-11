@@ -5,11 +5,11 @@
             "name": "自用小雅"
         },
         {
-            "url": "http://肥猫.com/",
+            "url": "https://肥猫.com/",
             "name": "肥猫"
         },
         {
-            "url": "http://www.饭太硬.com/tv/",
+            "url": "https://www.饭太硬.com/tv/",
             "name": "饭太硬"
         },
         {
@@ -21,15 +21,11 @@
             "name": "摸鱼儿"
         },
         {
-            "url": "https://mirror.ghproxy.com/raw.githubusercontent.com/gaotianliuyun/gao/master/0825.json",
-            "name": "PG one"
-        },
-        {
             "url": "https://mirror.ghproxy.com/raw.githubusercontent.com/gaotianliuyun/gao/master/0827.json",
             "name": "FongMi"
         },
         {
-            "url": "https://mirror.ghproxy.com/raw.githubusercontent.com/PizazzGY/TVBox/main/api.json",
+            "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/PizazzGY/TVBox/main/api.json",
             "name": "PizazzGY"
         },
         {
@@ -63,10 +59,6 @@
         {
             "url": "https://pastebin.com/raw/5NHaxyGR",
             "name": "道长"
-        },
-        {
-            "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/gaotianliuyun/gao/master/9918.json",
-            "name": "9918"
         },
         {
             "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/xiongjian83/TvBox/main/18/18live.json",

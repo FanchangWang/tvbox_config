@@ -1,11 +1,11 @@
 {
     "urls": [
         {
-            "url": "http://肥猫.com/",
-            "name": "肥猫【2024-7-6】"
+            "url": "https://肥猫.com/",
+            "name": "肥猫【2024-9-11】"
         },
         {
-            "url": "http://www.饭太硬.com/tv/",
+            "url": "https://www.饭太硬.com/tv/",
             "name": "饭太硬"
         },
         {
@@ -17,15 +17,11 @@
             "name": "摸鱼儿"
         },
         {
-            "url": "https://mirror.ghproxy.com/raw.githubusercontent.com/gaotianliuyun/gao/master/0825.json",
-            "name": "PG one"
-        },
-        {
             "url": "https://mirror.ghproxy.com/raw.githubusercontent.com/gaotianliuyun/gao/master/0827.json",
             "name": "FongMi"
         },
         {
-            "url": "https://mirror.ghproxy.com/raw.githubusercontent.com/PizazzGY/TVBox/main/api.json",
+            "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/PizazzGY/TVBox/main/api.json",
             "name": "PizazzGY"
         },
         {
