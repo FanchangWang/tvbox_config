@@ -2,27 +2,27 @@
     "urls": [
         {
             "url": "https://肥猫.com/",
-            "name": "肥猫【2024-9-11】"
+            "name": "肥猫【2025-2-17】"
         },
         {
-            "url": "https://www.饭太硬.com/tv/",
+            "url": "http://www.饭太硬.com/tv",
             "name": "饭太硬"
         },
         {
-            "url": "http://tvbox.王二小放牛娃.xyz",
+            "url": "http://tvbox.王二小放牛娃.top/",
             "name": "王二小放牛娃"
         },
         {
-            "url": "http://我不是.摸鱼儿.top",
-            "name": "摸鱼儿"
+            "url": "https://mpanso.me/DEMO.json",
+            "name": "小米"
         },
         {
-            "url": "https://mirror.ghproxy.com/raw.githubusercontent.com/gaotianliuyun/gao/master/0827.json",
-            "name": "FongMi"
+            "url": "https://github.allproxy.us.kg/https://raw.githubusercontent.com/yoursmile66/TVBox/main/XC.json",
+            "name": "南风"
         },
         {
-            "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/PizazzGY/TVBox/main/api.json",
-            "name": "PizazzGY"
+            "url": "http://ok321.top/tv",
+            "name": "OK吊炸天"
         },
         {
             "url": "http://cdn.qiaoji8.com/tvbox.json",
@@ -33,28 +33,12 @@
             "name": "俊佬"
         },
         {
-            "url": "http://rihou.cc:88/荷城茶秀",
-            "name": "荷城茶秀"
-        },
-        {
-            "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/xyq254245/xyqonlinerule/main/XYQTVBox.json",
+            "url": "https://github.allproxy.us.kg/https://raw.githubusercontent.com/xyq254245/xyqonlinerule/main/XYQTVBox.json",
             "name": "香雅情"
         },
         {
-            "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/gaotianliuyun/gao/master/js.json",
+            "url": "https://github.allproxy.us.kg/https://raw.githubusercontent.com/gaotianliuyun/gao/master/js.json",
             "name": "高天流云"
-        },
-        {
-            "url": "https://www.macms.pro/box/3.json",
-            "name": "迈达"
-        },
-        {
-            "url": "http://39.101.135.137:8080",
-            "name": "小白龙"
-        },
-        {
-            "url": "https://pastebin.com/raw/5NHaxyGR",
-            "name": "道长"
         }
     ]
 }
