@@ -2,23 +2,19 @@
     "urls": [
         {
             "url": "http://www.饭太硬.com/tv",
-            "name": "饭太硬【2025-09-15】"
+            "name": "饭太硬【2025-10-19】"
         },
         {
             "url": "http://tvbox.王二小放牛娃.top/",
             "name": "王二小放牛娃"
         },
         {
-            "url": "https://mpanso.me/DEMO.json",
-            "name": "小米"
+            "url": "http://ok321.top/tv",
+            "name": "OK吊炸天"
         },
         {
             "url": "https://github.guyuexuan.ip-ddns.com/https://raw.githubusercontent.com/yoursmile66/TVBox/main/XC.json",
             "name": "南风"
-        },
-        {
-            "url": "http://ok321.top/tv",
-            "name": "OK吊炸天"
         },
         {
             "url": "http://cdn.qiaoji8.com/tvbox.json",
@@ -33,8 +29,8 @@
             "name": "香雅情"
         },
         {
-            "url": "https://github.guyuexuan.ip-ddns.com/https://raw.githubusercontent.com/gaotianliuyun/gao/master/js.json",
-            "name": "高天流云"
+            "url": "https://gitee.com/yiwu369/6758/raw/master/神州.zip",
+            "name": "神州本地包"
         }
     ]
 }
