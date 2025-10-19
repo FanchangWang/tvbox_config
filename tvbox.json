@@ -2,7 +2,7 @@
     "urls": [
         {
             "url": "http://www.饭太硬.com/tv",
-            "name": "饭太硬【2025-10-19】"
+            "name": "饭太硬【2025-10-20】"
         },
         {
             "url": "http://tvbox.王二小放牛娃.top/",
@@ -29,8 +29,20 @@
             "name": "香雅情"
         },
         {
-            "url": "https://gitee.com/yiwu369/6758/raw/master/神州.zip",
-            "name": "神州本地包"
+            "url": "https://www.252035.xyz/p/jsm.json",
+            "name": "PG本地包"
+        },
+        {
+            "url": "https://www.252035.xyz/z/FongMi.json",
+            "name": "真心本地包"
+        },
+        {
+            "url": "https://cnb.cool/fish2018/pg/-/git/raw/master/jsm.json",
+            "name": "PG本地包备用"
+        },
+        {
+            "url": "https://cnb.cool/fish2018/zx/-/git/raw/master/FongMi.json",
+            "name": "真心本地包备用"
         }
     ]
 }
