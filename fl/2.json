@@ -4,7 +4,7 @@
         {
             "name": "天上人间",
             "type": 0,
-            "url": "https://github.allproxy.dpdns.org/https://raw.githubusercontent.com/FanchangWang/tvbox_config/main/fl/live.json",
+            "url": "https://github.allproxy.dpdns.org/https://raw.githubusercontent.com/FanchangWang/tvbox_config/main/fl/live.txt",
             "playerType": 1,
             "ua": "okhttp/5.0.0-alpha.14",
             "epg": "https://diyp99.112114.xyz/",
