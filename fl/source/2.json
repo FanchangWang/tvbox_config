@@ -4,18 +4,10 @@
     {
       "name": "天上人间",
       "type": 0,
-      "url": "https://github.allproxy.dpdns.org/https://raw.githubusercontent.com/FanchangWang/tvbox_config/main/fl/FL.txt",
+      "url": "clan://localhost/6758/天上人间/FL.txt",
       "playerType": 1,
       "ua": "okhttp/3.15",
       "epg": "https://diyp20.112114.xyz/",
-      "logo": "https://gd-hbimg.huaban.com/ca8b4e7379e601bca6eb21c33c1994e59e991b481ec6c7-RbvXmL_fw658"
-    },
-    {
-      "name": "hsck",
-      "type": 0,
-      "url": "https://github.allproxy.dpdns.org/https://raw.githubusercontent.com/fuxkjd/hsck/main/dist/all.m3u",
-      "ua": "okhttp/5.0.0-alpha.14",
-      "epg": "https://diyp99.112114.xyz/",
       "logo": "https://gd-hbimg.huaban.com/ca8b4e7379e601bca6eb21c33c1994e59e991b481ec6c7-RbvXmL_fw658"
     }
   ],

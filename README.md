@@ -6,3 +6,13 @@
 
 ## 带18+
 [https://raw.githubusercontent.com/FanchangWang/tvbox_config/main/my.json](https://raw.githubusercontent.com/FanchangWang/tvbox_config/main/my.json)
+
+## 更新 fl 线路
+```
+python update_fl.py
+```
+
+## 生成 tvbox 线路
+```
+python generate_json.py
+```
