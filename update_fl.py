@@ -195,6 +195,7 @@ def copy_and_modify_json():
 
 # 主函数
 def main():
+    print("开始更新 fl 线路...")
     # 1. 检查更新
     update_needed, remote_datetime = check_update()
     if not update_needed:

@@ -1,5 +1,7 @@
 from datetime import datetime
+from datetime import timedelta, timezone
 import json
+
 import requests
 
 # github 代理
@@ -123,8 +125,8 @@ def generate_available_sources(sources):
                 })
                 print(f"✅ 可用数据源: {name} - {processed_url}")
                 break
-            else:
-                print(f"❌ 错误数据源: {name} - {processed_url}")
+            # 如果所有 URL 都检查过且不可用，记录错误
+            print(f"❌ 错误数据源: {name}")
 
     return available_sources
 
@@ -136,10 +138,13 @@ def generate_final_json(sources):
 
 # 主函数
 def main():
+    print("开始生成 tvbox 线路...")
     # 生成可用的 tvbox 数据源
     available_tvbox = generate_available_sources(tvbox_sources)
     if available_tvbox:
-        available_tvbox[0]["name"] += f" [{datetime.now().strftime('%Y-%m-%d %H:%M')}]"
+        # 转换为东八区时间
+        tz = timezone(timedelta(hours=8))
+        available_tvbox[0]["name"] += f" [{datetime.now(tz).strftime('%Y-%m-%d %H:%M')}]"
     # 生成可用的 my 数据源（合并 tvbox 和 my 数据源）
     available_my = available_tvbox + generate_available_sources(my_sources)
 
