@@ -39,6 +39,6 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add .
           git diff --staged --quiet && echo "No changes" || (
-            git commit -m "Auto update: $(date +'%Y-%m-%d %H:%M:%S')" &&
+            git commit -m "Auto update: $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M:%S')" &&
             git push
           )
