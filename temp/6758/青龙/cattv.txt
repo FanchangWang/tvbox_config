@@ -1,0 +1,6 @@
+[
+{
+"name":"猫直播",
+"url":"http://rihou.cc:567/gggg.nzk&&&https://api.btstu.cn/sjbz/api.php"
+}
+]
