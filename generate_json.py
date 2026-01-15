@@ -1,6 +1,7 @@
 from datetime import datetime
 from datetime import timedelta, timezone
 import json
+from typing import Any
 
 import requests
 
@@ -43,10 +44,10 @@ tvbox_sources = [
         "name": "巧技",
         "urls": ["http://cdn.qiaoji8.com/tvbox.json"]
     },
-    {
-        "name": "俊佬",
-        "urls": ["http://home.jundie.top:81/top98.json"]
-    },
+    # {
+    #     "name": "俊佬",
+    #     "urls": ["http://home.jundie.top:81/top98.json"]
+    # },
     {
         "name": "香雅情",
         "urls": ["https://raw.githubusercontent.com/xyq254245/xyqonlinerule/main/XYQTVBox.json"]
@@ -139,28 +140,72 @@ def generate_final_json(sources):
 # 主函数
 def main():
     print("开始生成 tvbox 线路...")
-    # 生成可用的 tvbox 数据源
+    # 检查可用的 tvbox 数据源
     available_tvbox = generate_available_sources(tvbox_sources)
+    available_my = generate_available_sources(my_sources)
+
+    # 读取历史保存的 tvbox_history.json my_history.json
+    try:
+        with open("tvbox_history.json", "r", encoding="utf-8") as f:
+            tvbox_history = json.load(f)
+    except FileNotFoundError:
+        tvbox_history = []
+
+    try:
+        with open("my_history.json", "r", encoding="utf-8") as f:
+            my_history = json.load(f)
+    except FileNotFoundError:
+        my_history = []
+
+    # 判断两个字典列表是否相等（忽略顺序）
+    def are_lists_equal(list1, list2):
+        if len(list1) != len(list2):
+            return False
+        # 将每个字典转换为可哈希的元组形式，然后比较集合
+        set1 = {tuple(sorted(d.items())) for d in list1}
+        set2 = {tuple(sorted(d.items())) for d in list2}
+        return set1 == set2
+
+    # 判断 available_tvbox 与 tvbox_history 是否有差异
+    tvbox_diff = not are_lists_equal(available_tvbox, tvbox_history)
+    # 判断 available_my 与 my_history 是否有差异
+    my_diff = not are_lists_equal(available_my, my_history)
+
+    if not tvbox_diff and not my_diff:
+        print("✅ 无差异，无需更新！脚本结束！")
+        return
+
+    # 如果有差异，更新 tvbox_history.json my_history.json
+    if tvbox_diff:
+        with open("tvbox_history.json", "w", encoding="utf-8") as f:
+            json.dump(available_tvbox, f, ensure_ascii=False, indent=2)
+    if my_diff:
+        with open("my_history.json", "w", encoding="utf-8") as f:
+            json.dump(available_my, f, ensure_ascii=False, indent=2)
+
     if available_tvbox:
         # 转换为东八区时间
         tz = timezone(timedelta(hours=8))
         available_tvbox[0]["name"] += f" [{datetime.now(tz).strftime('%Y-%m-%d %H:%M')}]"
     # 生成可用的 my 数据源（合并 tvbox 和 my 数据源）
-    available_my = available_tvbox + generate_available_sources(my_sources)
+    available_my = available_tvbox + available_my
 
     # 生成 tvbox.json
-    tvbox_json = generate_final_json(available_tvbox)
-    with open("tvbox.json", "w", encoding="utf-8") as f:
-        json.dump(tvbox_json, f, ensure_ascii=False, indent=2)
+    if tvbox_diff:
+        print(f"✅ tvbox.json 包含 {len(available_tvbox)} 个可用数据源")
+        tvbox_json = generate_final_json(available_tvbox)
+        with open("tvbox.json", "w", encoding="utf-8") as f:
+            json.dump(tvbox_json, f, ensure_ascii=False, indent=2)
+
 
     # 生成 my.json
-    my_json = generate_final_json(available_my)
-    with open("my.json", "w", encoding="utf-8") as f:
-        json.dump(my_json, f, ensure_ascii=False, indent=2)
+    if my_diff:
+        print(f"✅ my.json 包含 {len(available_my)} 个可用数据源")
+        my_json = generate_final_json(available_my)
+        with open("my.json", "w", encoding="utf-8") as f:
+            json.dump(my_json, f, ensure_ascii=False, indent=2)
 
-    print(f"✅ 生成完成！")
-    print(f"✅ tvbox.json 包含 {len(available_tvbox)} 个可用数据源")
-    print(f"✅ my.json 包含 {len(available_my)} 个可用数据源")
+    print(f"✅ 生成完成！脚本结束！")
 
 if __name__ == "__main__":
     main()
