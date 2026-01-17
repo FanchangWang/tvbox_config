@@ -4,8 +4,14 @@
 ## 线路链接
 [https://raw.githubusercontent.com/FanchangWang/tvbox_config/main/tvbox.json](https://raw.githubusercontent.com/FanchangWang/tvbox_config/main/tvbox.json)
 
+## 线路链接(代理)
+[https://fastly.jsdelivr.net/gh/FanchangWang/tvbox_config@main/tvbox.json](https://fastly.jsdelivr.net/gh/FanchangWang/tvbox_config@main/tvbox.json)
+
 ## 带18+
 [https://raw.githubusercontent.com/FanchangWang/tvbox_config/main/my.json](https://raw.githubusercontent.com/FanchangWang/tvbox_config/main/my.json)
+
+## 带18+(代理)
+[https://fastly.jsdelivr.net/gh/FanchangWang/tvbox_config@main/my.json](https://fastly.jsdelivr.net/gh/FanchangWang/tvbox_config@main/my.json)
 
 ## Python 脚本
 ```
