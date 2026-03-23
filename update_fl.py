@@ -17,7 +17,6 @@ FL_DIR = "fl"
 SOURCE_DIR = f"{FL_DIR}/source"
 DATE_FILE = f"{SOURCE_DIR}/date.txt"
 JSON_FILE = f"{FL_DIR}/2.json"
-LIVE_FILE =  f"{FL_DIR}/FL.txt"
 
 # 创建temp目录
 os.makedirs(TEMP_DIR, exist_ok=True)
@@ -94,10 +93,9 @@ def download_and_extract():
 
 # 3. 检查文件是否存在
 def check_files_exist():
-    check_path1 = os.path.join(TEMP_DIR, "6758", "天上人间", "2.json")
-    check_path2 = os.path.join(TEMP_DIR, "6758", "天上人间", "FL.txt")
+    check_path = os.path.join(TEMP_DIR, "6758", "天上人间", "2.json")
 
-    if not os.path.exists(check_path1) or not os.path.exists(check_path2):
+    if not os.path.exists(check_path):
         print("解压后的文件不完整")
         return False
 
@@ -115,20 +113,16 @@ def get_file_hash(file_path):
 def compare_and_update(remote_datetime):
     # 获取源文件路径
     new_json_path = os.path.join(TEMP_DIR, "6758", "天上人间", "2.json")
-    new_fl_path = os.path.join(TEMP_DIR, "6758", "天上人间", "FL.txt")
 
     # 获取目标文件路径
     old_json_path = os.path.join(SOURCE_DIR, "2.json")
-    old_fl_path = os.path.join(SOURCE_DIR, "FL.txt")
 
     # 检查旧文件是否存在
     old_json_exists = os.path.exists(old_json_path)
-    old_fl_exists = os.path.exists(old_fl_path)
 
     # 如果旧文件不存在，直接更新
-    if not old_json_exists or not old_fl_exists:
+    if not old_json_exists:
         shutil.copy2(new_json_path, old_json_path)
-        shutil.copy2(new_fl_path, old_fl_path)
         # 更新date.txt
         with open(DATE_FILE, "w") as f:
             f.write(remote_datetime.strftime("%Y-%m-%d %H:%M:%S"))
@@ -137,16 +131,13 @@ def compare_and_update(remote_datetime):
     # 比较文件hash
     new_json_hash = get_file_hash(new_json_path)
     old_json_hash = get_file_hash(old_json_path)
-    new_fl_hash = get_file_hash(new_fl_path)
-    old_fl_hash = get_file_hash(old_fl_path)
 
-    if new_json_hash == old_json_hash and new_fl_hash == old_fl_hash:
+    if new_json_hash == old_json_hash:
         print("文件无变化")
         return False
 
     # 更新文件
     shutil.copy2(new_json_path, old_json_path)
-    shutil.copy2(new_fl_path, old_fl_path)
 
     # 更新date.txt
     with open(DATE_FILE, "w") as f:
@@ -154,21 +145,12 @@ def compare_and_update(remote_datetime):
 
     return True
 
-# 5. 复制文件
-def copy_files():
-    # 复制FL.txt到live.txt
-    shutil.copy2(os.path.join(SOURCE_DIR, "FL.txt"), LIVE_FILE)
-
-# 6. 复制并修改JSON文件
+# 5. 复制并修改JSON文件
 def copy_and_modify_json():
     # 读取源JSON文件
     source_json_path = os.path.join(SOURCE_DIR, "2.json")
     with open(source_json_path, "r", encoding="utf-8") as f:
         data = json.load(f)
-
-    # 修改lives[0]的url
-    if "lives" in data and len(data["lives"]) > 0:
-        data["lives"][0]["url"] = f"https://github.allproxy.dpdns.org/https://raw.githubusercontent.com/FanchangWang/tvbox_config/main/{LIVE_FILE}"
 
     # 添加lives[1]节点
     new_live = {
@@ -181,7 +163,7 @@ def copy_and_modify_json():
     }
 
     if "lives" in data:
-        # 如果lives数组长度大于1，替换索引1，否则添加
+        # 如果lives数组长度大于1，替换索引1，否则添加新节点
         if len(data["lives"]) > 1:
             data["lives"][1] = new_live
         else:
@@ -212,10 +194,7 @@ def main():
     if not compare_and_update(remote_datetime):
         return
 
-    # 5. 复制文件
-    copy_files()
-
-    # 6. 复制并修改JSON文件
+    # 5. 复制并修改JSON文件
     copy_and_modify_json()
 
     print("更新完成")
