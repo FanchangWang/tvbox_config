@@ -5,7 +5,7 @@ from typing import List
 
 import yaml
 
-from .models import Source, AvailableSource
+from .models import AvailableSource, Source
 
 
 class SourceManager:
@@ -67,7 +67,9 @@ class SourceManager:
             yaml.dump(dict_data, f, allow_unicode=True, indent=2)
 
     @staticmethod
-    def are_sources_equal(list1: List[AvailableSource], list2: List[AvailableSource]) -> bool:
+    def are_sources_equal(
+        list1: List[AvailableSource], list2: List[AvailableSource]
+    ) -> bool:
         """
         比较两个源列表是否相等（按顺序）
 

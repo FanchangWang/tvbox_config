@@ -1,12 +1,13 @@
 """数据模型模块，定义数据类"""
 
-from dataclasses import dataclass, field
-from typing import List, Optional
+from dataclasses import dataclass
+from typing import List
 
 
 @dataclass
 class Source:
     """源信息数据类"""
+
     name: str
     urls: List[str]
     encrypted: bool = False
@@ -35,6 +36,7 @@ class Source:
 @dataclass
 class AvailableSource:
     """可用源信息数据类"""
+
     name: str
     url: str
     r18: bool = False

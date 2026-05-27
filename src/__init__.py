@@ -20,12 +20,12 @@ app.run()
 ```
 """
 
-from .logger import Logger
-from .source_manager import SourceManager
+from .app import App
 from .http_client import HttpClient
 from .json_builder import JsonBuilder
-from .app import App
-from .models import Source, AvailableSource
+from .logger import Logger
+from .models import AvailableSource, Source
+from .source_manager import SourceManager
 
 __all__ = [
     "Logger",

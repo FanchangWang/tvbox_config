@@ -46,13 +46,13 @@ class JsonBuilder:
         """
         output_path = self.dist_dir / filename
         self.dist_dir.mkdir(exist_ok=True)
-        
+
         dict_data = []
         for source in data:
             source_dict = source.to_dict()
             source_dict = {k: v for k, v in source_dict.items() if k != "r18"}
             dict_data.append(source_dict)
-        
+
         result = {"urls": dict_data}
         with output_path.open("w", encoding="utf-8") as f:
             json.dump(result, f, ensure_ascii=False, indent=2)
@@ -65,7 +65,9 @@ class JsonBuilder:
             sources: 可用源列表
         """
         # 深拷贝源对象，避免引用共享问题
-        tvbox_sources = [AvailableSource(s.name, s.url, s.r18) for s in sources if not s.r18]
+        tvbox_sources = [
+            AvailableSource(s.name, s.url, s.r18) for s in sources if not s.r18
+        ]
         my_sources = [AvailableSource(s.name, s.url, s.r18) for s in sources]
 
         self._add_timestamp(tvbox_sources)

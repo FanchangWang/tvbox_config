@@ -6,7 +6,6 @@ TVBox 源检查和 JSON 生成工具
 
 from src.app import App
 
-
 if __name__ == "__main__":
     """程序主入口，创建 App 实例并执行"""
     app = App()
