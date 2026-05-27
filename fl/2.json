@@ -1,10 +1,10 @@
 {
-  "spider": "https://gitee.com/yiwu369/6758/raw/master/jar/999.jar",
+  "spider": "https://github.allproxy.dpdns.org/https://raw.githubusercontent.com/FanchangWang/tvbox_config/main/fl/999.jar",
   "lives": [
     {
       "name": "天上人间",
       "type": 0,
-      "url": "https://gitee.com/yiwu369/6758/raw/master/fl.png",
+      "url": "https://github.allproxy.dpdns.org/https://raw.githubusercontent.com/FanchangWang/tvbox_config/main/fl/live.txt",
       "playerType": 1,
       "ua": "okhttp/3.15",
       "epg": "https://diyp20.112114.xyz/",
@@ -14,12 +14,444 @@
       "name": "hsck",
       "type": 0,
       "url": "https://github.allproxy.dpdns.org/https://raw.githubusercontent.com/fuxkjd/hsck/main/dist/all.m3u",
-      "ua": "okhttp/5.0.0-alpha.14",
-      "epg": "https://diyp99.112114.xyz/",
-      "logo": "https://gd-hbimg.huaban.com/ca8b4e7379e601bca6eb21c33c1994e59e991b481ec6c7-RbvXmL_fw658"
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "天美传媒",
+      "type": 0,
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/txt/天美传媒816.txt",
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "果冻传媒",
+      "type": 0,
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/txt/果冻传媒816.txt",
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "麻豆传媒",
+      "type": 0,
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/txt/麻豆传媒816.txt",
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "星空传媒",
+      "type": 0,
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/txt/星空传媒816.txt",
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "精东影业",
+      "type": 0,
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/txt/精东影业816.txt",
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "国产传媒",
+      "type": 0,
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/txt/国产传媒.m3u",
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "pron",
+      "type": 0,
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/txt/pron.m3u",
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "几个传媒",
+      "type": 0,
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/txt/几个传媒.txt",
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "成人传媒",
+      "type": 0,
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/txt/成人传媒.txt",
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "181818",
+      "type": 0,
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/txt/181818.txt",
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "live18",
+      "type": 0,
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/txt/live18.txt",
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "花活",
+      "type": 0,
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/txt/花活.txt",
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "18资源丰富",
+      "type": 0,
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/txt/18资源丰富.txt",
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "至尊",
+      "type": 0,
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/txt/至尊.m3u",
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "终极",
+      "type": 0,
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/txt/终极.txt",
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "Jable嗅探",
+      "type": 0,
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/txt/Jable嗅探.txt",
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "vip源",
+      "type": 0,
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/txt/vip源.txt",
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "成人",
+      "type": 0,
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/txt/维护成人.txt",
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "18+",
+      "type": 0,
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/txt/18+.txt",
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "全球",
+      "type": 0,
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/txt/全球.txt",
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "无敌",
+      "type": 0,
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/txt/无敌.m3u",
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "经典",
+      "type": 0,
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/txt/经典.m3u",
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "成人电影",
+      "type": 0,
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/txt/成人电影.txt",
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "珍藏",
+      "type": 0,
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/txt/珍藏.m3u",
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "绝品",
+      "type": 0,
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/txt/绝品.txt",
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "美腿丝袜",
+      "type": 0,
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/txt/美腿丝袜.txt",
+      "ua": "okhttp/3.15"
     }
   ],
   "sites": [
+    {
+      "key": "doudouzy.com",
+      "name": "豆豆资源",
+      "type": 1,
+      "api": "https://doudouzy.com/api.php/provide/vod/?ac=list",
+      "searchable": 1,
+      "changeable": 1,
+      "categories": [
+        "欧美精品",
+        "国产传媒",
+        "国产视频",
+        "国产探花",
+        "极品学生",
+        "野战户外",
+        "网曝黑料",
+        "日本有码",
+        "校园春色",
+        "SM虐待",
+        "巨乳系列",
+        "偷拍自拍",
+        "强奸乱伦",
+        "制服诱惑",
+        "AV解说",
+        "成人动漫",
+        "日本无码",
+        "重口猎奇",
+        "少妇人妻",
+        "角色扮演",
+        "女同性恋",
+        "中文字幕",
+        "男同性恋",
+        "反差系列"
+      ]
+    },
+    {
+      "key": "采集集合",
+      "name": "采集集合+",
+      "jar": "https://fastlink.cokey.xyz/f/EbMYCX/%E6%9F%92%E8%B1%AA.jar",
+      "type": 4,
+      "api": "http://zhangqun1818.serv00.net/cj/cjjh.php",
+      "ext": "0"
+    },
+    {
+      "key": "lebozy.com",
+      "name": "乐播资源",
+      "type": 1,
+      "api": "https://lbapi9.com/api.php/provide/vod/",
+      "searchable": 1,
+      "changeable": 1,
+      "categories": [
+        "无码专区",
+        "欧美性爱",
+        "中文字幕",
+        "亚洲情色",
+        "国产主播",
+        "国产自拍",
+        "熟女人妻",
+        "强奸乱伦",
+        "巨乳美乳",
+        "制服诱惑",
+        "女同性恋",
+        "卡通动画",
+        "视频伦理",
+        "少女萝莉",
+        "重口色情",
+        "人兽性交"
+      ]
+    },
+    {
+      "key": "xzytv.com",
+      "name": "幸资资源",
+      "type": 1,
+      "api": "https://www.xiangjiaozyw.com/api.php/provide/vod/?ac=list",
+      "searchable": 1,
+      "changeable": 1,
+      "categories": [
+        "欧美精品",
+        "日韩精品",
+        "动漫精品",
+        "自拍偷拍",
+        "伦理影片",
+        "中文字幕",
+        "人妻系列",
+        "制服诱惑",
+        "强奸乱伦",
+        "AV明星",
+        "SM重味",
+        "巨乳系列",
+        "颜射系列",
+        "口交视频",
+        "自慰系列",
+        "教师学生",
+        "大秀视频",
+        "明星换脸",
+        "AV解说",
+        "VR视频"
+      ]
+    },
+    {
+      "key": "danaizi.com",
+      "name": "奶子资源",
+      "type": 1,
+      "api": "https://apidanaizi.com/api.php/provide/vod/",
+      "searchable": 1,
+      "changeable": 1,
+      "categories": [
+        "欧美激情",
+        "中文字幕",
+        "国产乱伦",
+        "自拍偷拍",
+        "制服丝袜",
+        "网曝事件",
+        "传媒探花",
+        "清纯学生",
+        "国产主播",
+        "A V 解说",
+        "淫妻作乐",
+        "港台辣妹",
+        "足浴撩妹",
+        "反差母狗",
+        "A I 换脸",
+        "V R 视角",
+        "重口性癖",
+        "制服诱惑",
+        "丝袜美腿",
+        "无码流出",
+        "多人群交",
+        "凌辱快感",
+        "角色剧情",
+        "强奸乱伦",
+        "韩国三级",
+        "人妻熟女",
+        "主奴调教",
+        "动漫卡通",
+        "变性伪娘",
+        "女同性恋",
+        "野外露出"
+      ]
+    },
+    {
+      "key": "heiliaozy.com",
+      "name": "黑料资源",
+      "type": 1,
+      "api": "https://heiliaozyapi.com/api.php/provide/vod/",
+      "searchable": 1,
+      "changeable": 1,
+      "categories": [
+        "中文字幕",
+        "国产传媒",
+        "日本有码",
+        "日本无码",
+        "AV解说",
+        "cosplay",
+        "黑丝诱惑",
+        "SWAG",
+        "自拍偷拍",
+        "激情动漫",
+        "网红主播",
+        "探花系列",
+        "三级伦理",
+        "VR视角",
+        "囊人搭讪",
+        "门事件",
+        "抖阴视频"
+      ]
+    },
+    {
+      "key": "yszzq.com",
+      "name": "大奶资源",
+      "type": 1,
+      "api": "https://apidanaizi.com/api.php/provide/vod/",
+      "searchable": 1,
+      "changeable": 1,
+      "categories": [
+        "精品推荐",
+        "欧美激情",
+        "国产主播",
+        "国产乱伦",
+        "自拍偷拍",
+        "制服丝袜",
+        "网曝事件",
+        "传媒探花",
+        "清纯学生",
+        "A V 解说",
+        "淫妻作乐",
+        "港台辣妹",
+        "足浴撩妹",
+        "反差母狗",
+        "A I 换脸",
+        "V R 视角",
+        "重口性癖",
+        "制服诱惑",
+        "丝袜美腿",
+        "中文字幕",
+        "无码流出",
+        "多人群交",
+        "凌辱快感",
+        "角色剧情",
+        "强奸乱伦",
+        "韩国三级",
+        "人妻熟女",
+        "主奴调教",
+        "动漫卡通",
+        "变性伪娘",
+        "女同性恋",
+        "野外露出"
+      ]
+    },
+    {
+      "key": "jkzyuan.cc",
+      "name": "爱坤资源",
+      "type": 1,
+      "api": "https://jkunzyapi.com/api.php/provide/vod",
+      "searchable": 1,
+      "changeable": 1,
+      "categories": [
+        "国产传媒",
+        "黑丝诱惑",
+        "SWAG",
+        "中文字幕",
+        "日本有码",
+        "日本无码",
+        "AV解说",
+        "cosplay",
+        "激情动漫",
+        "自拍偷拍",
+        "网红主播",
+        "探花系列",
+        "三级伦理",
+        "VR视角",
+        "素人搭讪",
+        "门事件",
+        "抖阴视频"
+      ]
+    },
+    {
+      "key": "xjzyapi.xyz",
+      "name": "小鸡资源",
+      "type": 1,
+      "api": "https://api.xjzyapi.xyz/provide/vod",
+      "searchable": 1,
+      "changeable": 1,
+      "categories": [
+        "欧美精选",
+        "日韩精选",
+        "国产精选",
+        "VR专区",
+        "性感网红",
+        "重口调教",
+        "厂牌经典",
+        "人兽",
+        "其他",
+        "强奸迷奸",
+        "网曝黑料",
+        "国产厂牌",
+        "丝袜制服",
+        "主播网红",
+        "AI换脸",
+        "乱伦",
+        "SM调教",
+        "群交多P",
+        "学生萝莉",
+        "自拍偷拍",
+        "口交自慰",
+        "国产三级",
+        "日韩AV",
+        "素人特摄",
+        "无码高清",
+        "经典有码",
+        "中文字幕",
+        "日韩三级",
+        "东南亚",
+        "阿拉伯",
+        "印巴拉丁",
+        "激情H漫",
+        "3D"
+      ]
+    },
     {
       "key": "乐播资源",
       "name": "🈲🔞🐯白虎视频",
