@@ -1,0 +1,80 @@
+sources:
+  - name: "饭太硬"
+    urls:
+      - "http://www.饭太硬.net/tv"
+      - "http://www.饭太硬.cc/tv"
+      - "http://fty.xxooo.cf/tv"
+      - "https://raw.atomgit.com/xxxooo/fan/blobs/cef5f441c422cffe4852e0fc8b102f9be6d2bb2b/in.bmp"
+    encrypted: true
+    r18: false
+  - name: "肥猫"
+    urls:
+      - "http://肥猫.net/"
+      - "http://盒子迷.top/禁止贩卖"
+      - "http://hello.肥猫.net/"
+      - "https://肥猫.net/tv"
+    encrypted: true
+    r18: false
+  - name: "王二小放牛娃"
+    urls:
+      - "http://tvbox.王二小放牛娃.top/"
+    encrypted: true
+    r18: false
+  # - name: "OK吊炸天"
+  #   urls:
+  #     - "http://ok321.top/tv"
+  #   encrypted: false
+  #   r18: false
+  - name: "南风"
+    urls:
+      - "https://raw.githubusercontent.com/yoursmile66/TVBox/main/XC.json"
+    encrypted: false
+    r18: false
+  # - name: "巧技"
+  #   urls:
+  #     - "http://cdn.qiaoji8.com/tvbox.json"
+  #   encrypted: false
+  #   r18: false
+  - name: "香雅情"
+    urls:
+      - "https://raw.githubusercontent.com/xyq254245/xyqonlinerule/main/XYQTVBox.json"
+    encrypted: false
+    r18: false
+  - name: "摸鱼儿"
+    urls:
+      - "https://我不是.摸鱼儿.top"
+      - "https://www.小不点.com"
+    encrypted: false
+    r18: false
+  - name: "凯速"
+    urls:
+      - "https://6800.kstore.vip/fish.json"
+    encrypted: false
+    r18: false
+  - name: "PG本地包"
+    urls:
+      - "https://www.252035.xyz/p/jsm.json"
+      - "https://cnb.cool/fish2018/pg/-/git/raw/master/jsm.json"
+    encrypted: false
+    r18: false
+  - name: "真心本地包"
+    urls:
+      - "https://www.252035.xyz/z/FongMi.json"
+      - "https://cnb.cool/fish2018/zx/-/git/raw/master/FongMi.json"
+    encrypted: false
+    r18: false
+  - name: "神州天上人间"
+    urls:
+      - "https://raw.githubusercontent.com/FanchangWang/tvbox_config/main/fl/2.json"
+    encrypted: false
+    r18: true
+  - name: "18live"
+    urls:
+      - "https://raw.githubusercontent.com/xiongjian83/TvBox/main/18/18live.json"
+    encrypted: false
+    r18: true
+  - name: "19"
+    urls:
+      - "https://raw.githubusercontent.com/xiongjian83/TvBox/main/18/19.json"
+    encrypted: false
+    r18: true
