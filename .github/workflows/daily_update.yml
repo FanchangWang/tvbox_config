@@ -49,5 +49,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "actions@github.com"
           git add dist/ config/
-          git commit -m "Auto update $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H-%M-%S')"
+          git commit -m "Auto update $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M:%S')"
           git push
