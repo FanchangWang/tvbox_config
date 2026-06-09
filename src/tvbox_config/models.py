@@ -1,20 +1,15 @@
-"""数据模型模块，定义数据类"""
-
 from dataclasses import dataclass
-from typing import List
+from typing import Self
 
 
 @dataclass
 class Source:
-    """源信息数据类"""
-
     name: str
-    urls: List[str]
+    urls: list[str]
     encrypted: bool = False
     r18: bool = False
 
     def to_dict(self) -> dict:
-        """转换为字典格式"""
         return {
             "name": self.name,
             "urls": self.urls,
@@ -23,8 +18,7 @@ class Source:
         }
 
     @classmethod
-    def from_dict(cls, data: dict) -> "Source":
-        """从字典创建实例"""
+    def from_dict(cls, data: dict) -> Self:
         return cls(
             name=data["name"],
             urls=data["urls"],
@@ -35,14 +29,11 @@ class Source:
 
 @dataclass
 class AvailableSource:
-    """可用源信息数据类"""
-
     name: str
     url: str
     r18: bool = False
 
     def to_dict(self) -> dict:
-        """转换为字典格式"""
         return {
             "name": self.name,
             "url": self.url,
@@ -50,8 +41,7 @@ class AvailableSource:
         }
 
     @classmethod
-    def from_dict(cls, data: dict) -> "AvailableSource":
-        """从字典创建实例"""
+    def from_dict(cls, data: dict) -> Self:
         return cls(
             name=data["name"],
             url=data["url"],

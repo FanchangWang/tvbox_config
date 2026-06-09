@@ -28,7 +28,7 @@ sources:
   - name: "南风"
     urls:
       - "https://raw.githubusercontent.com/yoursmile66/TVBox/main/XC.json"
-    encrypted: false
+    encrypted: true
     r18: false
   # - name: "巧技"
   #   urls:

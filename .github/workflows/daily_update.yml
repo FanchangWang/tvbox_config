@@ -18,13 +18,13 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup uv
-        uses: astral-sh/setup-uv@v4
+        uses: astral-sh/setup-uv@v5
 
       - name: Install dependencies
         run: uv sync
 
       - name: Run main script
-        run: uv run python main.py
+        run: uv run tvbox-config
 
       - name: Commit changes
         run: |
