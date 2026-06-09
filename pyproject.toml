@@ -10,10 +10,14 @@ dependencies = [
 ]
 
 [dependency-groups]
-dev = ["ruff>=0.1.0"]
+dev = [
+    "ruff>=0.1.0",
+    "ty>=0.0.46",
+]
 
 [project.scripts]
 tvbox-config = "tvbox_config.app:main"
+check = "tvbox_config._check:main"
 
 [build-system]
 requires = ["hatchling>=1.25.0"]

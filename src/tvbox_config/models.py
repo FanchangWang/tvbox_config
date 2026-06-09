@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Self
+from typing import Any, Self
 
 
 @dataclass
@@ -9,7 +9,7 @@ class Source:
     encrypted: bool = False
     r18: bool = False
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> dict[str, object]:
         return {
             "name": self.name,
             "urls": self.urls,
@@ -18,7 +18,7 @@ class Source:
         }
 
     @classmethod
-    def from_dict(cls, data: dict) -> Self:
+    def from_dict(cls, data: dict[str, Any]) -> Self:
         return cls(
             name=data["name"],
             urls=data["urls"],
@@ -33,7 +33,7 @@ class AvailableSource:
     url: str
     r18: bool = False
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> dict[str, object]:
         return {
             "name": self.name,
             "url": self.url,
@@ -41,7 +41,7 @@ class AvailableSource:
         }
 
     @classmethod
-    def from_dict(cls, data: dict) -> Self:
+    def from_dict(cls, data: dict[str, Any]) -> Self:
         return cls(
             name=data["name"],
             url=data["url"],
