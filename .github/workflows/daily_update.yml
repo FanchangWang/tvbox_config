@@ -49,6 +49,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "actions@github.com"
           git add dist/ config/
-          MSG="Auto update $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H-%M-%S')"
-          git reset --soft $(git commit-tree $(git write-tree) -m "$MSG")
-          git push --force-with-lease
+          git commit -m "Auto update $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H-%M-%S')"
+          git push
