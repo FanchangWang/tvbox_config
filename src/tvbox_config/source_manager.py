@@ -42,4 +42,4 @@ class SourceManager:
     def are_sources_equal(list1: list[AvailableSource], list2: list[AvailableSource]) -> bool:
         if len(list1) != len(list2):
             return False
-        return all(s1.to_dict() == s2.to_dict() for s1, s2 in zip(list1, list2))
+        return all(s1.to_dict() == s2.to_dict() for s1, s2 in zip(list1, list2, strict=True))

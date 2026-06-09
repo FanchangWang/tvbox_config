@@ -9,18 +9,18 @@ dependencies = [
     "pyyaml>=6.0.3",
 ]
 
+[dependency-groups]
+dev = ["ruff>=0.1.0"]
+
 [project.scripts]
 tvbox-config = "tvbox_config.app:main"
 
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling>=1.25.0"]
 build-backend = "hatchling.build"
 
-[dependency-groups]
-dev = ["ruff>=0.1.0"]
-
-[tool.uv.sources]
-tvbox_config = { path = "src/tvbox_config", editable = true }
+[tool.hatch.build.targets.wheel]
+packages = ["src/tvbox_config"]
 
 [tool.ty.environment]
 python = ".venv"
@@ -30,8 +30,10 @@ target-version = "py312"
 line-length = 100
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "N", "W", "UP"]
+select = ["B", "E", "F", "I", "N", "W", "UP"]
+fixable = ["ALL"]
 
 [tool.ruff.format]
-quote-style = "double"
 indent-style = "space"
+quote-style = "double"
+docstring-code-format = true
