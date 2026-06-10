@@ -1,3 +1,5 @@
+from typing import ClassVar
+
 import dirtyjson
 
 from .http_client import HttpClient
@@ -10,7 +12,7 @@ logger = get_logger()
 
 
 class App:
-    DECRYPT_URLS = [
+    DECRYPT_URLS: ClassVar[list[str]] = [
         "https://feiyangdigital.v1.mk/api/jiemi.php?url=",
         "https://www.饭太硬.net/jm/jiemi.php?url=",
     ]
@@ -87,7 +89,7 @@ class App:
                 available_sources.append(result)
 
         if self.source_manager.are_sources_equal(available_sources, history):
-            logger.info("无差异，无需更新！脚本结束！")
+            logger.info("无差异, 无需更新! 脚本结束!")
             return
 
         self.source_manager.save_history(available_sources)
@@ -98,7 +100,7 @@ class App:
 
         logger.info(f"tvbox.json 包含 {tvbox_count} 个可用数据源")
         logger.info(f"my.json 包含 {my_count} 个可用数据源")
-        logger.info("生成完成！脚本结束！")
+        logger.info("生成完成! 脚本结束!")
 
 
 def main() -> None:

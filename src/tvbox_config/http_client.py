@@ -1,8 +1,10 @@
+from typing import ClassVar
+
 import httpx
 
 
 class HttpClient:
-    HEADERS = {
+    HEADERS: ClassVar[dict[str, str]] = {
         "User-Agent": "okhttp/3.12.11",
         "Accept-Encoding": "gzip",
         "Connection": "Keep-Alive",
