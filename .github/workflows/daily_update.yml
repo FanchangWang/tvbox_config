@@ -41,6 +41,7 @@ jobs:
             echo "changed=true" >> $GITHUB_OUTPUT
           else
             echo "changed=false" >> $GITHUB_OUTPUT
+            echo "No changes to commit"
           fi
 
       - name: Commit and push
