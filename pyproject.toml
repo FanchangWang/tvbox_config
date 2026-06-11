@@ -7,12 +7,16 @@ dependencies = [
     "dirtyjson>=1.0.8",
     "httpx>=0.28.1",
     "pyyaml>=6.0.3",
+    "pycryptodome>=3.23.0",
 ]
 
 [dependency-groups]
 dev = [
+    "pytest>=9.0.3",
+    "pytest-cov>=7.1.0",
+    "respx>=0.23.1",
     "ruff>=0.15.16",
-    "ty>=0.0.46",
+    "ty>=0.0.48",
 ]
 
 [project.scripts]
@@ -20,7 +24,7 @@ tvbox-config = "tvbox_config.app:main"
 check = "tvbox_config._check:main"
 
 [build-system]
-requires = ["hatchling>=1.25.0"]
+requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
@@ -37,7 +41,22 @@ target-version = "py312"
 line-length = 100
 
 [tool.ruff.lint]
-select = ["B", "E", "F", "I", "N", "W", "UP", "SIM", "RUF"]
+select = [
+    "E", "W", "F", # 标准
+    "I", # 导入
+    "UP", "RUF", # 代码现代化
+    "B", "BLE", "T10", # Bug
+    "SIM", "C4", "PERF", "PIE", # 简化与性能
+    "N", # 命名
+    "PTH", # 路径
+    # "ASYNC", # 异步（如项目用 asyncio 则保留，否则删掉）
+    "PT", # 测试
+    "TRY", # 异常
+]
+ignore = [
+    "E501",
+    "TRY003",
+]
 fixable = ["ALL"]
 
 [tool.ruff.format]

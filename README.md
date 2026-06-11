@@ -18,22 +18,26 @@
 
 ```
 tvbox_config/
-├── config/              # 配置文件
-│   ├── sources.yaml     # 源列表配置
-│   └── history.yaml     # 历史记录（自动生成）
-├── dist/                # 生成的 JSON 文件
-│   ├── tvbox.json       # 不含 R18
-│   └── my.json          # 含 R18
-├── src/
-│   └── tvbox_config/    # 源代码包
-│       ├── app.py           # 主程序入口
-│       ├── http_client.py   # HTTP 客户端 (httpx)
-│       ├── json_builder.py  # JSON 构建器
-│       ├── logger.py        # 日志模块
-│       ├── models.py        # 数据模型
-│       └── source_manager.py # 源管理器
-├── pyproject.toml       # 项目配置
-└── uv.lock              # 依赖锁定文件
+├── config/                 # 配置文件
+│   ├── sources.yaml        # 源列表配置
+│   └── history.yaml        # 历史记录（自动生成）
+├── dist/                   # 生成的 JSON 文件
+│   ├── tvbox.json          # 不含 R18
+│   └── my.json             # 含 R18
+├── src/tvbox_config/       # 源代码包
+│   ├── __init__.py         # 公开 API
+│   ├── app.py              # 主程序入口
+│   ├── _check.py           # `uv run check` 入口
+│   ├── decrypt.py          # AES-CBC / base64 解密
+│   ├── http_client.py      # HTTP 客户端 (httpx)
+│   ├── json_builder.py     # JSON 输出生成
+│   ├── logger.py           # 日志模块
+│   ├── models.py           # 数据模型
+│   └── source_manager.py   # YAML 配置管理
+├── tests/                  # 测试
+├── pyproject.toml
+├── uv.lock
+└── AGENTS.md               # opencode 项目指引
 ```
 
 ## 本地运行
@@ -44,24 +48,26 @@ uv sync
 
 # 运行程序
 uv run tvbox-config
+
+# 跑测试
+uv run pytest
 ```
 
 ## 开发
 
 ```bash
-# 安装依赖（含开发依赖）
-uv sync --dev
+# 一键检查（lint + format + type check）
+uv run check
 
-# 代码格式化
-uv run ruff format src/tvbox_config/
-
-# 代码检查
+# 或分别执行
 uv run ruff check src/tvbox_config/
+uv run ruff format src/tvbox_config/
+uv run ty check src/tvbox_config
 ```
 
 ## 自动更新
 
-项目配置了 GitHub Actions，每天 11:00（北京时间）自动检测并更新可用的 TVBox 线路。
+项目配置了 GitHub Actions，每天 03:00 UTC（11:00 北京时间）自动检测并更新可用的 TVBox 线路。
 
 ## 配置文件说明
 
@@ -79,5 +85,5 @@ sources:
 
 - `name`: 数据源名称
 - `urls`: URL 列表（按顺序检查，第一个可用的将被使用）
-- `encrypted`: 是否为加密源（会通过解密接口获取内容）
+- `encrypted`: 是否为加密源（优先本地 Python 解密，失败后回退到解密 API）
 - `r18`: 是否为 R18 源（R18 源只会出现在 my.json 中）

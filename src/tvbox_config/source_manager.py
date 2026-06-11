@@ -20,16 +20,16 @@ class SourceManager:
         sources: list[Source] = []
         if self.sources_path.exists():
             with self.sources_path.open("r", encoding="utf-8") as f:
-                for item in yaml.safe_load(f).get("sources", []):
-                    sources.append(Source.from_dict(item))
+                sources.extend(
+                    Source.from_dict(item) for item in yaml.safe_load(f).get("sources", [])
+                )
         return sources
 
     def load_history(self) -> list[AvailableSource]:
         sources: list[AvailableSource] = []
         if self.history_path.exists():
             with self.history_path.open("r", encoding="utf-8") as f:
-                for item in yaml.safe_load(f) or []:
-                    sources.append(AvailableSource.from_dict(item))
+                sources.extend(AvailableSource.from_dict(item) for item in yaml.safe_load(f) or [])
         return sources
 
     def save_history(self, data: list[AvailableSource]) -> None:
