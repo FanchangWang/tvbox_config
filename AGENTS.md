@@ -1,150 +1,147 @@
-# TVBox Config — Project Guide
+# TVBox Config — 项目指引
 
-## Overview
+## 概述
 
-TVBox source checker and JSON generator. Fetches TVBox source URLs, decrypts
-encrypted sources (AES-CBC / base64), validates content, and generates
-`tvbox.json` / `my.json` output files. Runs daily via GitHub Actions.
+TVBox 数据源检测与 JSON 生成工具。获取 TVBox 源 URL，解密加密源（AES-CBC / base64），验证内容，并生成 `tvbox.json` / `my.json` 输出文件。通过 GitHub Actions 每日自动运行。
 
-## Tech Stack
+## 技术栈
 
-| Category        | Choice                         |
-| --------------- | ------------------------------ |
-| Python          | 3.12+                          |
-| Package manager | `uv` (no pip/poetry/conda)     |
-| Lint + Format   | `ruff`                         |
-| Type check      | `ty`                           |
-| Test            | `pytest` + `pytest-cov`        |
-| HTTP mock       | `respx`                        |
-| Build           | `hatchling`                    |
+| 类别           | 选型                           |
+| -------------- | ------------------------------ |
+| Python         | 3.12+                          |
+| 包管理器       | `uv`（不使用 pip/poetry/conda）|
+| 检查 + 格式化  | `ruff`                         |
+| 类型检查       | `ty`                           |
+| 测试           | `pytest` + `pytest-cov`        |
+| HTTP 模拟      | `respx`                        |
+| 构建           | `hatchling`                    |
 
-## Project Structure
+## 项目结构
 
 ```
 tvbox_config/
-├── src/tvbox_config/          # Package source
-│   ├── __init__.py            # Public API exports
-│   ├── app.py                 # Main App class, CLI entry
-│   ├── _check.py              # `uv run check` entry (ruff + ty)
-│   ├── decrypt.py             # AES-CBC / base64 decryption functions
-│   ├── http_client.py         # httpx wrapper with okhttp UA
-│   ├── json_builder.py        # Module-level functions for JSON output
-│   ├── logger.py              # logging setup to stderr
-│   ├── models.py              # Source / AvailableSource dataclasses
-│   └── source_manager.py      # YAML config load/save
+├── src/tvbox_config/          # 源码包
+│   ├── __init__.py            # 公开 API 导出
+│   ├── app.py                 # 主 App 类，CLI 入口
+│   ├── _check.py              # `uv run check` 入口（ruff + ty）
+│   ├── decrypt.py             # AES-CBC / base64 解密函数
+│   ├── http_client.py         # httpx 封装，okhttp UA
+│   ├── json_builder.py        # JSON 输出模块级函数
+│   ├── logger.py              # 日志输出到 stderr
+│   ├── models.py              # Source / AvailableSource 数据类
+│   └── source_manager.py      # YAML 配置加载/保存
 ├── config/
-│   ├── sources.yaml           # Source definitions
-│   └── history.yaml           # Last successful state
-├── dist/                      # Generated JSON output
-├── tests/                     # pytest tests
-├── .github/workflows/         # CI: daily_update.yml
+│   ├── sources.yaml           # 源定义
+│   └── history.yaml           # 上次成功状态
+├── dist/                      # 生成的 JSON 输出
+├── tests/                     # pytest 测试
+├── .github/workflows/         # CI：daily_update.yml
 ├── pyproject.toml
 └── AGENTS.md
 ```
 
-## Commands
+## 命令
 
 ```bash
-uv sync                  # Install / sync dependencies
-uv run tvbox-config      # Main: check sources, generate JSON
-uv run check             # Run ruff check + ruff format --check + ty check
-uv run ruff check .      # Lint only
-uv run ruff format .     # Format only
-uv run ty check          # Type check only
-uv run pytest            # Run tests with coverage
-uv add <package>         # Add production dependency
-uv add --dev <package>   # Add dev dependency
+uv sync                  # 安装/同步依赖
+uv run tvbox-config      # 主程序：检测源，生成 JSON
+uv run check             # 运行 ruff check + ruff format --check + ty check
+uv run ruff check .      # 仅检查格式
+uv run ruff format .     # 仅格式化
+uv run ty check          # 仅类型检查
+uv run pytest            # 运行测试（含覆盖率）
+uv add <package>         # 添加生产依赖
+uv add --dev <package>   # 添加开发依赖
 ```
 
-## Code Conventions
+## 代码规范
 
-### Structure
-- **src-layout** under `src/tvbox_config/`
-- Stateless transformations → module-level functions (`decrypt.py`, `json_builder.py`, `logger.py`, `_check.py`)
-- Objects with state/lifecycle → class (`HttpClient`, `SourceManager`, `App`)
-- Data containers → `@dataclass` with `to_dict()` / `from_dict()` (`models.py`)
+### 结构
+- **src-layout** 位于 `src/tvbox_config/`
+- 无状态转换 → 模块级函数（`decrypt.py`, `json_builder.py`, `logger.py`, `_check.py`）
+- 有状态/生命周期对象 → 类（`HttpClient`, `SourceManager`, `App`）
+- 数据容器 → `@dataclass` 配合 `to_dict()` / `from_dict()`（`models.py`）
 
-### Styling (enforced by ruff)
-- Target Python 3.12, line length 100
-- Double quotes for strings
-- Spaces for indentation
-- Imports: stdlib → third-party → local (separated by blank lines)
-- Annotate return types on all functions
-- Use `ClassVar` for class-level constants
-- Use `Self` return type for `@classmethod`
-- No comments in code (except docstrings in `pyproject.toml` config)
+### 风格（ruff 强制）
+- 目标 Python 3.12，行宽 100
+- 字符串使用双引号
+- 缩进使用空格
+- 导入顺序：标准库 → 第三方 → 本地（空行分隔）
+- 所有函数需标注返回类型
+- 类级常量使用 `ClassVar`
+- `@classmethod` 返回类型使用 `Self`
+- 代码中不写注释（`pyproject.toml` 配置中的文档字符串除外）
 
-### Formatting (ruff)
+### 格式化（ruff）
 ```bash
 ruff format . && ruff check . --fix
 ```
 
-### Logging
-- `logging` via `get_logger()` from `logger.py`
-- Format: `[HH:MM:SS] [LEVEL] message`
-- Outputs to stderr
-- `logger.info()` for milestones
-- `logger.debug()` for per-URL progress
-- `logger.error()` for failures
-- Log patterns for sources:
-  - Encrypted: start with `⏳ 解密数据源: {name} - {url}`
-  - Not encrypted: start with `⏳ 检查数据源: {name} - {url}`
-  - Success: `✅ 可用数据源: {name} - {url}`
-  - All URLs exhausted: `🚫 不可用数据源: {name}`
+### 日志
+- 通过 `logger.py` 的 `get_logger()` 使用 `logging`
+- 格式：`[HH:MM:SS] [LEVEL] message`
+- 输出到 stderr
+- `logger.info()` 用于里程碑
+- `logger.debug()` 用于每个 URL 的进度
+- `logger.error()` 用于失败
+- 数据源日志模板：
+  - 加密：以 `⏳ 解密数据源: {name} - {url}` 开头
+  - 非加密：以 `⏳ 检查数据源: {name} - {url}` 开头
+  - 成功：`✅ 可用数据源: {name} - {url}`
+  - 所有 URL 用尽：`🚫 不可用数据源: {name}`
 
-### HTTP Client
-- UA: `okhttp/4.12.0`
+### HTTP 客户端
+- UA：`okhttp/4.12.0`
 - `follow_redirects=True`
-- Connect timeout: 5s, read timeout: 30s
-- On any `httpx.HTTPError` → return `None`
+- 连接超时：5s，读取超时：30s
+- 任何 `httpx.HTTPError` → 返回 `None`
 
-### Decryption (source.encrypted == true)
-- Local Python decryption first:
-  1. Fetch raw content from source URL
-  2. If already JSON (dict with `spider` + `sites` keys) → skip decryption
-  3. If contains `xxxxxxxx**` pattern → try base64 decode
-  4. If starts with `2423` → try AES-CBC decrypt
-- Fallback: try remote decrypt API endpoints (`DECRYPT_URLS`)
+### 解密（source.encrypted == true）
+- 优先本地 Python 解密：
+  1. 获取源 URL 的原始内容
+  2. 如果已是 JSON（包含 `spider` + `sites` 键的 dict）→ 跳过解密
+  3. 如果包含 `xxxxxxxx**` 模式 → 尝试 base64 解码
+  4. 如果以 `2423` 开头 → 尝试 AES-CBC 解密
+- 回退：尝试远程解密 API 端点（`DECRYPT_URLS`）
 
-### Decryption API URLs (defined as `App.DECRYPT_URLS`)
+### 解密 API URL（定义在 `App.DECRYPT_URLS`）
 1. `https://feiyangdigital.v1.mk/api/jiemi.php?url=`
 2. `https://www.饭太硬.net/jm/jiemi.php?url=`
 
-## Dependencies
+## 依赖
 
-### Production
-- `dirtyjson` — lenient JSON parser
-- `httpx` — HTTP client
-- `pyyaml` — YAML config parser
-- `pycryptodome` — AES-CBC decryption
+### 生产依赖
+- `dirtyjson` — 宽松 JSON 解析器
+- `httpx` — HTTP 客户端
+- `pyyaml` — YAML 配置解析器
+- `pycryptodome` — AES-CBC 解密
 
-### Dev
-- `ruff` — linter + formatter
-- `ty` — type checker
-- `pytest` + `pytest-cov` — testing + coverage
-- `respx` — HTTP mocking for tests
+### 开发依赖
+- `ruff` — 检查器 + 格式化工具
+- `ty` — 类型检查器
+- `pytest` + `pytest-cov` — 测试 + 覆盖率
+- `respx` — HTTP 模拟测试
 
 ## GitHub Actions
 
-Runs daily at 03:00 UTC via `.github/workflows/daily_update.yml`:
+通过 `.github/workflows/daily_update.yml` 每天 03:00 UTC 运行：
 
-1. Checkout + install uv + Python 3.12
+1. 检出代码 + 安装 uv + Python 3.12
 2. `uv sync`
 3. `uv run tvbox-config`
-4. If `dist/` or `config/` changed → commit and push
+4. 如果 `dist/` 或 `config/` 有变化 → 提交并推送
 
-## Content Validation (JSON)
+## 内容验证（JSON）
 
-A source is valid when parsing with `dirtyjson` yields a dict that contains
-**both** non-empty `"spider"` and `"sites"` keys.
+使用 `dirtyjson` 解析后得到包含 **同时存在** 且非空的 `"spider"` 和 `"sites"` 键的 dict，则该源有效。
 
-## Testing
+## 测试
 
-Tests go in `tests/`, mirroring source structure:
+测试文件放在 `tests/`，目录结构与源码对应：
 
 ```bash
-uv run pytest -v -s    # verbose, no capture
-uv run pytest          # default (with coverage)
+uv run pytest -v -s    # 详细模式，不截断输出
+uv run pytest          # 默认模式（含覆盖率）
 ```
 
-Use `respx` to mock HTTP when testing network-dependent code.
+对测试网络相关代码时，使用 `respx` 模拟 HTTP。
