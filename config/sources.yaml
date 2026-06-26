@@ -10,9 +10,10 @@ sources:
   - name: "肥猫"
     urls:
       - "http://肥猫.net/"
-      - "http://盒子迷.top/禁止贩卖"
       - "http://hello.肥猫.net/"
       - "https://肥猫.net/tv"
+      - "https://w.junce.dpdns.org/fm.gif"
+      - "http://盒子迷.top/禁止贩卖"
     encrypted: true
     r18: false
   - name: "王二小放牛娃"
