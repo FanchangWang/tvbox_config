@@ -27,7 +27,7 @@ class App:
     def _check_content_valid(content: str) -> bool:
         try:
             data = dirtyjson.loads(content)
-            return (
+            return bool(
                 isinstance(data, dict)
                 and "spider" in data
                 and "sites" in data

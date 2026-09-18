@@ -6,15 +6,15 @@ TVBox 数据源检测与 JSON 生成工具。获取 TVBox 源 URL，解密加密
 
 ## 技术栈
 
-| 类别           | 选型                           |
-| -------------- | ------------------------------ |
-| Python         | 3.12+                          |
-| 包管理器       | `uv`（不使用 pip/poetry/conda）|
-| 检查 + 格式化  | `ruff`                         |
-| 类型检查       | `ty`                           |
-| 测试           | `pytest` + `pytest-cov`        |
-| HTTP 模拟      | `respx`                        |
-| 构建           | `hatchling`                    |
+| 类别           | 选型                                           |
+| -------------- | ---------------------------------------------- |
+| Python         | 3.12+（`.python-version` 固定 3.12）           |
+| 包管理器       | `uv`（不使用 pip/poetry/conda）                |
+| 检查 + 格式化  | `ruff`                                         |
+| 类型检查       | `ty`                                           |
+| 测试           | `pytest` + `pytest-cov`                        |
+| HTTP 模拟      | `respx`                                        |
+| 构建           | `uv_build`（src-layout，`module-root = "src"`） |
 
 ## 项目结构
 
@@ -33,9 +33,12 @@ tvbox_config/
 ├── config/
 │   ├── sources.yaml           # 源定义
 │   └── history.yaml           # 上次成功状态
-├── dist/                      # 生成的 JSON 输出
+├── dist/                      # 生成的 JSON 输出（被跟踪，见「仓库约定」）
 ├── tests/                     # pytest 测试
 ├── .github/workflows/         # CI：daily_update.yml
+├── .python-version            # Python 版本（uv 自动读取）
+├── .gitattributes             # 行尾约定
+├── .gitignore
 ├── pyproject.toml
 └── AGENTS.md
 ```
@@ -44,6 +47,8 @@ tvbox_config/
 
 ```bash
 uv sync                  # 安装/同步依赖
+uv sync --upgrade        # 升级依赖并刷新 uv.lock
+uv sync --no-dev         # 仅安装生产依赖（CI 运行程序时使用）
 uv run tvbox-config      # 主程序：检测源，生成 JSON
 uv run check             # 运行 ruff check + ruff format --check + ty check
 uv run ruff check .      # 仅检查格式
@@ -53,6 +58,19 @@ uv run pytest            # 运行测试（含覆盖率）
 uv add <package>         # 添加生产依赖
 uv add --dev <package>   # 添加开发依赖
 ```
+
+## 仓库约定
+
+这几条是硬约束，改动前先看清楚，别按 Python 模板的直觉来。
+
+- **`dist/` 必须提交，不要忽略。** 它是本项目的 JSON 输出目录，由每日 workflow 写入并提交。
+  `.gitignore` 里没有任何 `dist/` 规则；若加了 `dist/`（或 `dist/*`），被忽略的新文件不会出现在
+  `git status --porcelain dist/` 中，每日更新会**静默不提交**。
+- **行尾统一 LF。** `.gitattributes` 为 `* text=auto eol=lf`：二进制自动检测 + 工作区强制 LF。
+  新增二进制类型要显式声明为 `binary`（如 `*.jar`、`*.zip`、图片），否则可能被当作文本归一化而损坏。
+- **`.workbuddy/` 已忽略**，属于 AI 协作工作目录，不要提交。
+- 需要停止跟踪某个已提交文件时，用 `git rm --cached <file>`（保留本地文件），并同时补上忽略规则；
+  不要用 `git rm`（会连本地文件一起删）。
 
 ## 代码规范
 
@@ -68,7 +86,7 @@ uv add --dev <package>   # 添加开发依赖
 - 缩进使用空格
 - 导入顺序：标准库 → 第三方 → 本地（空行分隔）
 - 所有函数需标注返回类型
-- 类级常量使用 `ClassVar`
+- 类级常量使用 `ClassVar`（`RUF012` 虽被豁免，但仍按此写）
 - `@classmethod` 返回类型使用 `Self`
 - 代码中不写注释（`pyproject.toml` 配置中的文档字符串除外）
 
@@ -124,12 +142,19 @@ ruff format . && ruff check . --fix
 
 ## GitHub Actions
 
-通过 `.github/workflows/daily_update.yml` 每天 03:00 UTC 运行：
+`.github/workflows/daily_update.yml` 只有一个 job `update`，每天 03:00 UTC（11:00 北京时间）运行：
 
-1. 检出代码 + 安装 uv + Python 3.12
-2. `uv sync`
-3. `uv run tvbox-config`
-4. 如果 `dist/` 或 `config/` 有变化 → 提交并推送
+1. 检出代码（`fetch-depth: 0`）+ 安装 uv（`enable-cache`）+ `uv python install 3.12`
+2. `uv sync --no-dev`
+3. `uv run --no-dev tvbox-config`
+4. `git status --porcelain dist/ config/` 有变化 → `git add dist/ config/` → 用 bot 身份提交并推送
+
+**CI 不跑质量检查。** `ruff` / `ty` / `pytest` 只在本地通过 `uv run check` + `uv run pytest` 执行——
+所以提交前必须自己跑一遍，别指望流水线兜底。若日后要把门禁搬进 CI，做法是加一个 `quality` job
+（`uv sync` + `uv run check` + `uv run pytest`）并让 `update` 声明 `needs: quality`。
+
+> 依赖升级后 ty / ruff 常新增规则（例如 ty 0.0.81 引入 `unsound-return-statement`），
+> 升级 `pyproject.toml` 里的下限后要在本地把 `uv run check` 跑通再提交。
 
 ## 内容验证（JSON）
 
@@ -137,7 +162,10 @@ ruff format . && ruff check . --fix
 
 ## 测试
 
-测试文件放在 `tests/`，目录结构与源码对应：
+测试文件放在 `tests/`，目录结构与源码对应。
+
+覆盖率由 `[tool.pytest.ini_options]` 提供（`--cov=src/tvbox_config --cov-report=term-missing`），
+因此 `uv run pytest` 默认输出覆盖率，无需在命令行重复传参：
 
 ```bash
 uv run pytest -v -s    # 详细模式，不截断输出

@@ -1,14 +1,7 @@
-* text=auto
-
-*.py text eol=lf
-*.toml text eol=lf
-*.md text eol=lf
-*.yaml text eol=lf
-*.yml text eol=lf
-.env text eol=lf
-.env.* text eol=lf
+* text=auto eol=lf
 
 *.zip binary
+*.jar binary
 *.png binary
 *.jpg binary
 *.jpeg binary

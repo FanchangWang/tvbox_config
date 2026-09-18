@@ -2,6 +2,10 @@
 name = "tvbox_config"
 version = "1.1.0"
 description = "TVBox source checker and JSON generator"
+readme = "README.md"
+authors = [
+    { name = "古月玄", email = "2651919937@qq.com" }
+]
 requires-python = ">=3.12"
 dependencies = [
     "dirtyjson>=1.0.8",
@@ -12,11 +16,11 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "pytest>=9.0.3",
+    "pytest>=9.1.1",
     "pytest-cov>=7.1.0",
     "respx>=0.23.1",
-    "ruff>=0.15.16",
-    "ty>=0.0.48",
+    "ruff>=0.16.8",
+    "ty>=0.0.81",
 ]
 
 [project.scripts]
@@ -24,17 +28,19 @@ tvbox-config = "tvbox_config.app:main"
 check = "tvbox_config._check:main"
 
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["uv_build>=0.12.13,<0.13.0"]
+build-backend = "uv_build"
 
-[tool.hatch.build.targets.wheel]
-packages = ["src/tvbox_config"]
-
-[tool.uv]
-managed = true
+[tool.uv.build-backend]
+module-name = "tvbox_config"
+module-root = "src"
 
 [tool.ty.environment]
 python = ".venv"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--cov=src/tvbox_config --cov-report=term-missing"
 
 [tool.ruff]
 target-version = "py312"
@@ -54,10 +60,9 @@ select = [
     "TRY", # 异常
 ]
 ignore = [
-    "E501",
-    "TRY003",
+    "E501",    # 忽略超长行 (交给 ruff format 自动处理)
+    "TRY003",  # 允许在 raise Exception(...) 中写长文字说明
 ]
-fixable = ["ALL"]
 
 [tool.ruff.format]
 indent-style = "space"

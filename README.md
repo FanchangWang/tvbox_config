@@ -21,7 +21,7 @@ tvbox_config/
 ├── config/                 # 配置文件
 │   ├── sources.yaml        # 源列表配置
 │   └── history.yaml        # 历史记录（自动生成）
-├── dist/                   # 生成的 JSON 文件
+├── dist/                   # 生成的 JSON 文件（被跟踪，由 workflow 提交）
 │   ├── tvbox.json          # 不含 R18
 │   └── my.json             # 含 R18
 ├── src/tvbox_config/       # 源代码包
@@ -35,10 +35,16 @@ tvbox_config/
 │   ├── models.py           # 数据模型
 │   └── source_manager.py   # YAML 配置管理
 ├── tests/                  # 测试
+├── .python-version         # Python 版本（uv 自动读取）
+├── .gitattributes          # 行尾约定（LF）
 ├── pyproject.toml
-├── uv.lock
-└── AGENTS.md               # opencode 项目指引
+└── AGENTS.md               # AI 协作指引（WorkBuddy / CodeBuddy 读取）
 ```
+
+## 环境要求
+
+- Python 3.12+（`.python-version` 固定为 3.12）
+- `uv` 包管理器
 
 ## 本地运行
 
@@ -46,17 +52,20 @@ tvbox_config/
 # 安装依赖
 uv sync
 
+# 升级依赖（刷新 uv.lock）
+uv sync --upgrade
+
 # 运行程序
 uv run tvbox-config
 
-# 跑测试
+# 跑测试（含覆盖率）
 uv run pytest
 ```
 
 ## 开发
 
 ```bash
-# 一键检查（lint + format + type check）
+# 一键检查（ruff check + ruff format --check + ty check）
 uv run check
 
 # 或分别执行
@@ -65,9 +74,20 @@ uv run ruff format src/tvbox_config/
 uv run ty check src/tvbox_config
 ```
 
+> 质量检查只在本地执行，CI 不跑。提交前请自行跑通 `uv run check` 与 `uv run pytest`。
+
 ## 自动更新
 
-项目配置了 GitHub Actions，每天 03:00 UTC（11:00 北京时间）自动检测并更新可用的 TVBox 线路。
+项目配置了 GitHub Actions（`.github/workflows/daily_update.yml`），每天 03:00 UTC（11:00 北京时间）执行单一的 `update` job：
+
+1. `uv sync --no-dev` 安装生产依赖
+2. `uv run --no-dev tvbox-config` 检测源并重新生成 JSON
+3. 若 `dist/` 或 `config/` 有变化 → 自动提交并推送
+
+## 仓库约定
+
+- **`dist/` 必须提交**：它是生成的输出目录，被 workflow 直接提交，不要加入 `.gitignore`。
+- **行尾统一 LF**：`.gitattributes` 为 `* text=auto eol=lf`，二进制文件显式声明 `binary`。
 
 ## 配置文件说明
 

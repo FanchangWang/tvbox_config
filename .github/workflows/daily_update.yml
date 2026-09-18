@@ -16,12 +16,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v8.2.0
+        uses: astral-sh/setup-uv@v10.1.0
         with:
           enable-cache: true
 
@@ -29,10 +29,10 @@ jobs:
         run: uv python install 3.12
 
       - name: Install dependencies
-        run: uv sync
+        run: uv sync --no-dev
 
       - name: Run main script
-        run: uv run tvbox-config
+        run: uv run --no-dev tvbox-config
 
       - name: Check for changes
         id: git_status
