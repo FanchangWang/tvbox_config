@@ -3,7 +3,7 @@ from pathlib import Path
 import pytest
 import yaml
 
-from tvbox_config.models import AvailableSource, Source
+from tvbox_config.models import AvailableSource
 from tvbox_config.source_manager import SourceManager
 
 
@@ -73,6 +73,7 @@ class TestSaveHistory:
 
     def test_creates_dir_if_not_exists(self, manager: SourceManager) -> None:
         import shutil
+
         shutil.rmtree(manager.config_dir)
         data = [AvailableSource(name="x", url="http://x.com", r18=False)]
         manager.save_history(data)

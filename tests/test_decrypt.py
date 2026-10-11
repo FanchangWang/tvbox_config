@@ -13,7 +13,7 @@ from tvbox_config.decrypt import (
 )
 
 _VALID_JSON = '{"spider": "s", "sites": [{"key": "k", "name": "n", "type": 3}]}'
-_COMMENT_JSON = "// comment\n{\"spider\": \"s\", \"sites\": [{\"key\": \"k\", \"name\": \"n\", \"type\": 3}]}"
+_COMMENT_JSON = '// comment\n{"spider": "s", "sites": [{"key": "k", "name": "n", "type": 3}]}'
 
 
 class TestIsJsonObj:

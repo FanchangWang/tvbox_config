@@ -33,7 +33,10 @@ class TestApplyGithubProxy:
         url = "https://raw.githubusercontent.com/user/repo/file.json"
         proxy = "https://proxy.example.com"
         result = App._apply_github_proxy(url, proxy)
-        assert result == "https://proxy.example.com/https://raw.githubusercontent.com/user/repo/file.json"
+        assert (
+            result
+            == "https://proxy.example.com/https://raw.githubusercontent.com/user/repo/file.json"
+        )
 
     def test_non_github_url_unchanged(self) -> None:
         url = "http://example.com/data"
@@ -55,7 +58,9 @@ class TestCheckSource:
         respx_mock.get("http://first.com").respond(404)
         respx_mock.get("http://second.com").respond(200, text=_VALID_JSON)
         app = App()
-        source = Source(name="test", urls=["http://first.com", "http://second.com"], encrypted=False)
+        source = Source(
+            name="test", urls=["http://first.com", "http://second.com"], encrypted=False
+        )
         result = app.check_source(source)
         assert result is not None
         assert result.url == "http://second.com"
@@ -68,8 +73,9 @@ class TestCheckSource:
         assert app.check_source(source) is None
 
     def test_encrypted_local_decrypt_success(self, respx_mock: respx.MockRouter) -> None:
-        from tvbox_config.decrypt import pad_end
         from Crypto.Cipher import AES
+
+        from tvbox_config.decrypt import pad_end
 
         plaintext = _VALID_JSON
         key_str, iv_str = "k", "aaaaaaaaaaaaa"

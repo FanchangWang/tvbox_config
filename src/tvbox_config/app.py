@@ -45,7 +45,7 @@ class App:
 
     def _try_fetch(self, url: str) -> str | None:
         content = self.http_client.get(url)
-        if content and self._check_content_valid(content):
+        if content is not None and self._check_content_valid(content):
             return content
         return None
 
@@ -56,7 +56,7 @@ class App:
             if source.encrypted:
                 logger.debug(f"⏳ 解密数据源: {source.name} - {base_url}")
                 raw = self.http_client.get(base_url)
-                if raw:
+                if raw is not None:
                     try:
                         decrypted = decode(raw)
                         if self._check_content_valid(decrypted):
@@ -72,7 +72,7 @@ class App:
                 for decrypt_url in self.DECRYPT_URLS:
                     final_url = f"{decrypt_url}{base_url}"
                     logger.debug(f"⏳ 检查数据源: {source.name} - {final_url}")
-                    if self._try_fetch(final_url):
+                    if self._try_fetch(final_url) is not None:
                         logger.debug(f"✅ 可用数据源: {source.name} - {base_url}")
                         return AvailableSource(
                             name=source.name,
@@ -81,7 +81,7 @@ class App:
                         )
             else:
                 logger.debug(f"⏳ 检查数据源: {source.name} - {base_url}")
-                if self._try_fetch(base_url):
+                if self._try_fetch(base_url) is not None:
                     logger.debug(f"✅ 可用数据源: {source.name} - {base_url}")
                     return AvailableSource(
                         name=source.name,
