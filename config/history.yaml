@@ -19,6 +19,12 @@
 - name: 凯速
   r18: false
   url: https://6800.kstore.vip/fish.json
+- name: PG本地包
+  r18: false
+  url: https://www.252035.xyz/p/jsm.json
+- name: 真心本地包
+  r18: false
+  url: https://www.252035.xyz/z/FongMi.json
 - name: 神州天上人间
   r18: true
   url: https://github.allproxy.dpdns.org/https://raw.githubusercontent.com/FanchangWang/tvbox_config/main/fl/2.json
