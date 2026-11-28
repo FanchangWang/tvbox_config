@@ -19,6 +19,9 @@
 - name: 凯速
   r18: false
   url: https://6800.kstore.vip/fish.json
+- name: PG本地包
+  r18: false
+  url: https://www.252035.xyz/p/jsm.json
 - name: 真心本地包
   r18: false
   url: https://www.252035.xyz/z/FongMi.json
